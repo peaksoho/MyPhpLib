@@ -3,14 +3,14 @@
 任务的信息必须包含如下字段：
 <table>
 <tr><th>字段</th><th>类型</th><th>说明</th> </tr>
-<tr><th>id</th><th>Int</th><th>任务ID</th> </tr>
-<tr><th>app_name</th><th>String</th><th>项目名称</th> </tr>
-<tr><th>ip</th><th>String</th><th>服务器IP</th> </tr>
-<tr><th>task_action</th><th>String</th><th>任务命令（任务名 方法 [参数]）</th> </tr>
-<tr><th>flag</th><th>Int</th><th>是否开启，1开启，0关闭</th> </tr>
-<tr><th>interval</th><th>Int</th><th>循环间隔时间（单位秒）</th> </tr>
-<tr><th>cron_str</th><th>String</th><th>类似crontab的时间设置，如*/10 * * * *</th> </tr>
-<tr><th>expire</th><th>Int</th><th>任务超时时间（超时自动kill进程）</th> </tr>
+<tr><td>id</td><td>Int</td><td>任务ID</td> </tr>
+<tr><td>app_name</td><td>String</td><td>项目名称</td> </tr>
+<tr><td>ip</td><td>String</td><td>服务器IP</td> </tr>
+<tr><td>task_action</td><td>String</td><td>任务命令（任务名 方法 [参数]）</td> </tr>
+<tr><td>flag</td><td>Int</td><td>是否开启，1开启，0关闭</td> </tr>
+<tr><td>interval</td><td>Int</td><td>循环间隔时间（单位秒）</td> </tr>
+<tr><td>cron_str</td><td>String</td><td>类似crontab的时间设置，如*/10 * * * *</td> </tr>
+<tr><td>expire</td><td>Int</td><td>任务超时时间（超时自动kill进程）</td> </tr>
 </table>
 
 * 文件Base.php 中第42、43行需按自己具体情况获取任务列表。建议任务信息存在数据表中，并在后台增加任务管理功能，方便进行创建、编辑、设置、删除任务操作。
