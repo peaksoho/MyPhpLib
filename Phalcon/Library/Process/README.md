@@ -1,6 +1,6 @@
 这是一个cli 任务进程管理类库，可以管理任务进程，可循环间隔启动任务进程，也可按类似crontab命令在指定时间执行。
-任务可以保存在数据表，或者配置文件。
-任务的信息必须包含如下字段：
+* 任务可以保存在数据表，或者配置文件。
+* 任务的信息必须包含如下字段：
 <table>
 <tr><th>字段</th><th>类型</th><th>说明</th> </tr>
 <tr><td>id</td><td>Int</td><td>任务ID</td> </tr>
@@ -21,3 +21,34 @@ MultiProcess::multiRun('app_name', 'controller','action', function(&$MP) {
 }, 10); //此处10表示同时启用10个进程
 </pre>
 * 默认项目路径为: /opt/www/project_name
+* 实际进程启动完整命令为：php /opt/www/project_name/app/cli.php controller action > /opt/www/logs/tasks/project_name/2017/06/06/controller_action.log 2>&1 &
+* 执行任务需要添加一个进程管理控制程序，在tasks目录（针对Phalcon框架）下，添加CrontabprocessTask.php文件，代码如下：
+<pre>
+<?php
+class CrontabprocessTask extends \Phalcon\CLI\Task
+{
+    public function mainAction() {
+        $process = new \Phalcon\Library\Process\CrontabControl();
+        $process->run();
+    }
+
+    public function stopAction() {
+        $process = new \Phalcon\Library\Process\CrontabControl();
+        $process->stopCrontabManager();
+        $manager = new \Phalcon\Library\Process\CrontabManager();
+        $manager->stop();
+    }
+}
+</pre>
+* 然后添加一个进程管理程序，在tasks目录（针对Phalcon框架）下，添加CrontabmanagerTask.php文件，代码如下：
+<pre>
+<?php
+class CrontabmanagerTask extends \Phalcon\CLI\Task
+{
+    public function mainAction() {
+        $manager = new \Phalcon\Library\Process\CrontabManager();
+        $manager->run();
+    }
+}
+</pre>
+* 最后执行： php /opt/www/project_name/app/cli.php Crontabprocess > /opt/www/logs/tasks/project_name/2017/06/06/Crontabprocess.log 2>&1 & 就行了
