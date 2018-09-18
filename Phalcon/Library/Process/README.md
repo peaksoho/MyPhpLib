@@ -20,3 +20,4 @@ MultiProcess::multiRun('app_name', 'controller','action', function(&$MP) {
     //等待过程中，每1ms要执行的逻辑，比如检测执行进度
 }, 10); //此处10表示同时启用10个进程
 </pre>
+* 默认项目路径为: /opt/www/project_name
