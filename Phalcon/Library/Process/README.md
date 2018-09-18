@@ -24,7 +24,6 @@ MultiProcess::multiRun('app_name', 'controller','action', function(&$MP) {
 * 实际进程启动完整命令为：php /opt/www/project_name/app/cli.php controller action > /opt/www/logs/tasks/project_name/2017/06/06/controller_action.log 2>&1 &
 * 执行任务需要添加一个进程管理控制程序，在tasks目录（针对Phalcon框架）下，添加CrontabprocessTask.php文件，代码如下：
 <pre>
-<?php
 class CrontabprocessTask extends \Phalcon\CLI\Task
 {
     public function mainAction() {
@@ -42,7 +41,6 @@ class CrontabprocessTask extends \Phalcon\CLI\Task
 </pre>
 * 然后添加一个进程管理程序，在tasks目录（针对Phalcon框架）下，添加CrontabmanagerTask.php文件，代码如下：
 <pre>
-<?php
 class CrontabmanagerTask extends \Phalcon\CLI\Task
 {
     public function mainAction() {
@@ -52,3 +50,4 @@ class CrontabmanagerTask extends \Phalcon\CLI\Task
 }
 </pre>
 * 最后执行： php /opt/www/project_name/app/cli.php Crontabprocess > /opt/www/logs/tasks/project_name/2017/06/06/Crontabprocess.log 2>&1 & 就行了
+* 默认设定每隔2秒重新获取任务列表，然后判断进程状态，并按需要自动开启或停止任务进程。
