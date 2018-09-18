@@ -50,4 +50,4 @@ class CrontabmanagerTask extends \Phalcon\CLI\Task
 }
 </pre>
 * 最后执行： php /opt/www/project_name/app/cli.php Crontabprocess > /opt/www/logs/tasks/project_name/2017/06/06/Crontabprocess.log 2>&1 & 就行了
-* 默认设定每隔2秒重新获取任务列表，然后判断进程状态，并按需要自动开启或停止任务进程。
+* 程序每隔2秒重新获取任务列表，然后判断进程状态，并按需要自动开启或停止任务进程。
