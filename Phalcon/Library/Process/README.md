@@ -13,7 +13,7 @@
 <tr><td>expire</td><td>Int</td><td>任务超时时间（超时自动kill进程）</td> </tr>
 </table>
 
-* 文件Base.php 中第42、43行需按自己具体情况获取任务列表。建议任务信息存在数据表中，并在后台增加任务管理功能，方便进行创建、编辑、设置、删除任务操作。
+* 文件Base.php 中第42、43行需按自己具体情况获取任务列表。建议任务信息存在数据表中，并在后台增加任务管理功能，方便对任务进行创建、编辑、设置、删除操作。
 * 文件MultiProcess.php有用于对同一任务启动多进程处理的方法，比较适合异步队列数据较大的情况。使用方法如下：
 <pre>
 MultiProcess::multiRun('app_name', 'controller','action', function(&$MP) {
